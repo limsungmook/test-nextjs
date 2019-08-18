@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: test-nextjs-rc
+spec:
+  replicas: 3
+  selector:
+    app: test-nextjs
+  template:
+    metadata:
+      name: test-nextjs-pod
+      labels:
+        app: test-nextjs
+    spec:
+      containers:
+      - name: text-nextjs
+        image: ipes4579/test-nextjs:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
